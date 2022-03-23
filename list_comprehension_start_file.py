@@ -37,9 +37,13 @@ for i in original_list:
 # 1 Using a list comprehension, create a new list called "newlist" out of the list "numbers", 
 # which contains only the positive numbers from the list, as integers.
 
+from asyncore import read
+
+
 numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
 
-
+newlist = [i for i in numbers if i > 0]
+print(newlist)
 
 
 ## 2 create a list of integers which specify the length of each word in
@@ -48,7 +52,8 @@ numbers = [34.6, -203.4, 44.9, 68.3, -12.2, 44.6, 12.7]
 sentence = "the quick brown fox jumps over the lazy dog"
 words = sentence.split()
 
-
+length = [len(i) for i in words if i != 'the']
+print(length)
 
 ## Given dictionary is consisted of vehicles and their weights in kilograms. 
 ## Contruct a list of the names of vehicles with weight below 5000 kilograms. 
@@ -57,23 +62,28 @@ words = sentence.split()
 dict={"Sedan": 1500, "SUV": 2000, "Pickup": 2500, "Minivan": 1600, "Van": 2400, 
 "Semi": 13600, "Bicycle": 7, "Motorcycle": 110}
 
-
-
+cars = [i.upper() for i in dict if dict[i] < 5000]
+print(cars)
 
 ## Find all the numbers from 1 to 1000 that have a 4 in them
 
-
+fours = [i for i in range(1,1001) if '4' in str(i)]
+print(fours)
 
 ## count how many times the word 'the' appears in the text file - 'sometext.txt'
 
+file = open('sometext.txt','r')
 
+theCount = len([i for i in file.read().lower().split() if i == 'the'])
+print(theCount)
 
+file.close()
 ## Extract the numbers from the following phrase ##
 
-phrase = 'In 1984 there were 13 instances of a protest with over 1000 people attending. On average there were 15 reported injuries at each " +
-"event, with about 3 or 4 that were classifled as serious per event.'
+phrase = "In 1984 there were 13 instances of a protest with over 1000 people attending. On average there were 15 reported injuries at each event, with about 3 or 4 that were classifled as serious per event."
 
-
+numbersOnly = [i for i in phrase.split() if i.isdigit()]
+print(numbersOnly)
 
 
 
