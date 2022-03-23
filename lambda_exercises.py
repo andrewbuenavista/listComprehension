@@ -8,6 +8,7 @@ Odd numbers from the said list:
 [1, 3, 5, 7, 9]
 '''
 from multiprocessing.context import set_spawning_popen
+from posixpath import split
 from ssl import VerifyFlags
 
 
@@ -101,14 +102,21 @@ check whether a given string contains a capital letter, a lower case letter, a n
 (This is like a password verification function, HINT: Python function 'any' may be useful)
 '''
 
-password = 'thisIsmypassword1'
-password = list(password)
+password = 'tHi5ismypassword'
+splitword = list(password)
 
-verifier = lambda i: i.isupper()
+upperVerify = lambda i: i.isupper()
+lowerVerify = lambda i: i.islower()
+numberVerify = lambda i: i.isdigit()
 
-print(any(filter(verifier,password)))
+print(any(filter(upperVerify,splitword)))
+print(any(filter(lowerVerify,splitword)))
+print(any(filter(numberVerify,splitword)))
 
-
+if any(filter(upperVerify,splitword)) == True and any(filter(lowerVerify,splitword)) == True and any(filter(numberVerify,splitword)) == True and len(password) >=8 :
+    print("Password meets all requirements")
+else:
+    print("Password does not meet requirements")
 
 ''' 7)
 Write a Python program to sort a list of tuples using Lambda.
