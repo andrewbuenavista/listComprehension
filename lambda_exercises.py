@@ -109,14 +109,23 @@ upperVerify = lambda i: i.isupper()
 lowerVerify = lambda i: i.islower()
 numberVerify = lambda i: i.isdigit()
 
-print(any(filter(upperVerify,splitword)))
-print(any(filter(lowerVerify,splitword)))
-print(any(filter(numberVerify,splitword)))
+reqs = 0
 
-if any(filter(upperVerify,splitword)) == True and any(filter(lowerVerify,splitword)) == True and any(filter(numberVerify,splitword)) == True and len(password) >=8 :
+if (any(filter(upperVerify,splitword))):
+    reqs+=1
+if (any(filter(lowerVerify,splitword))):
+    reqs+=1
+if (any(filter(numberVerify,splitword))):
+    reqs+=1
+if len(password) >= 8:
+    reqs+=1
+
+if reqs == 4:
     print("Password meets all requirements")
 else:
     print("Password does not meet requirements")
+
+
 
 ''' 7)
 Write a Python program to sort a list of tuples using Lambda.
@@ -127,3 +136,9 @@ original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sci
 # Expected Result:
 # [('Social sciences', 82), ('English', 88), ('Science', 90), ('Maths', 97)]
 '''
+
+original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]
+
+newlist = sorted(original_scores,key=lambda x:x[1])
+
+print(newlist)
